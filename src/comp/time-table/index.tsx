@@ -1,12 +1,14 @@
 import useTimeTableState from "../../hooks/use-time-table-state";
 
 export default function TimeTable() {
-  const [tts] = useTimeTableState();
+  const [
+    /*tts*/
+  ] = useTimeTableState();
 
   return (
     <div>
       <div></div>
-      <div>
+      {/* <div>
         {tts.map((year) => (
           <div key={year} className="flex">
             {year.map((month) => (
@@ -44,7 +46,7 @@ export default function TimeTable() {
             ))}
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,14 +1,20 @@
+import { Dispatch } from "react";
 import useLocalStorage from "use-local-storage";
 
-const [day, month, year] = new Date()
-  .toLocaleDateString("de")
-  .split(".")
-  .map((t) => parseInt(t));
+// const [day, month, year] = new Date()
+//   .toLocaleDateString("de")
+//   .split(".")
+//   .map((t) => parseInt(t));
 
-const hour = new Date().getHours();
+// const hour = new Date().getHours();
 
-export default function useTimeTableState(): [string[][][][][]] {
-  const [tts, setTTS] = useLocalStorage<string[][][][][]>("time-table-state", [
+type TimeTableData = string[][][][][];
+
+export default function useTimeTableState(): [
+  TimeTableData,
+  Dispatch<TimeTableData>
+] {
+  const [tts, setTTS] = useLocalStorage<TimeTableData>("time-table-state", [
     [[[["Do Something", "Dont Do Something"]]]],
   ]);
   //   const [ttsOptions, setTTSOptions] = useLocalStorage(
@@ -17,5 +23,5 @@ export default function useTimeTableState(): [string[][][][][]] {
   //   );
   //   , setTTS, ttsOptions, setTTSOptions
 
-  return [tts];
+  return [tts, setTTS];
 }
