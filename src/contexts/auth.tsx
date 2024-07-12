@@ -19,17 +19,13 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     client?.get("login", auth)?.then((isAuth) => {
       if (isAuth) return;
-      setAuth?.(defaultAuth);
+      setAuth(defaultAuth);
     });
   }, [client, auth]);
 
-  if (!auth.isAuth) {
-    return <AuthPage />;
-  }
-
   return (
     <AuthContext.Provider value={[auth, setAuth]}>
-      {children}
+      {auth.isAuth ? children : <AuthPage />}
     </AuthContext.Provider>
   );
 }

@@ -1,7 +1,7 @@
-import useClientContext from "../../hooks/use-client-context";
+import TimeTable from "../../comp/time-table";
 
 export default function HomePage() {
-  const client = useClientContext();
-
-  return <div onClick={() => client?.close()}>HomePage</div>;
+  return <div className="page">
+    <TimeTable />
+  </div>;
 }

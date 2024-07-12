@@ -2,7 +2,7 @@ import { areSetAndTheSameType } from "are-set";
 import { createServer } from "wsnet-server";
 import fs, { mkdir, writeFile } from "fs/promises";
 import { existsSync } from "fs";
-import { error } from "console";
+import { error, log } from "console";
 import securifyPath from "./utils/securify-path.js";
 import hash from "./utils/hash.js";
 import path from "path";
