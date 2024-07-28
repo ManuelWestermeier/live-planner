@@ -1,7 +1,7 @@
 import useTimeTableState from "../../hooks/use-time-table-state";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import { EventContentArg } from "@fullcalendar/core/index.js";
+import { getRrenderEventContent } from "./get-render-event-content";
 
 export default function TimeTable() {
   const [events, setEvents] = useTimeTableState();
@@ -14,19 +14,8 @@ export default function TimeTable() {
         initialView="dayGridMonth"
         weekends={false}
         events={events}
-        eventContent={renderEventContent}
+        eventContent={getRrenderEventContent(events, setEvents)}
       />
     </div>
-  );
-}
-
-// a custom render function
-function renderEventContent(eventInfo: EventContentArg) {
-  return (
-    <>
-      event
-      <b>{eventInfo.timeText}</b>
-      <i>{eventInfo.event.title}</i>
-    </>
   );
 }
