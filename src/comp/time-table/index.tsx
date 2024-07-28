@@ -1,52 +1,32 @@
 import useTimeTableState from "../../hooks/use-time-table-state";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import { EventContentArg } from "@fullcalendar/core/index.js";
 
 export default function TimeTable() {
-  const [
-    /*tts*/
-  ] = useTimeTableState();
+  const [events, setEvents] = useTimeTableState();
 
   return (
     <div>
-      <div></div>
-      {/* <div>
-        {tts.map((year) => (
-          <div key={year} className="flex">
-            {year.map((month) => (
-              <div key={year + "." + month} className="flex">
-                {month.map((week) => (
-                  <div key={year + "." + month + "." + week} className="flex">
-                    {week.map((day) => (
-                      <div
-                        key={year + "." + month + "." + week + " " + day}
-                        className="flex col"
-                      >
-                        {day.map((h) => (
-                          <div
-                            className="flex col"
-                            key={
-                              year +
-                              "." +
-                              month +
-                              "." +
-                              week +
-                              " " +
-                              day +
-                              ":" +
-                              h
-                            }
-                          >
-                            {h}
-                          </div>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div> */}
+      <h1>Demo App</h1>
+      <FullCalendar
+        plugins={[dayGridPlugin]}
+        initialView="dayGridMonth"
+        weekends={false}
+        events={events}
+        eventContent={renderEventContent}
+      />
     </div>
+  );
+}
+
+// a custom render function
+function renderEventContent(eventInfo: EventContentArg) {
+  return (
+    <>
+      event
+      <b>{eventInfo.timeText}</b>
+      <i>{eventInfo.event.title}</i>
+    </>
   );
 }
