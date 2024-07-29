@@ -24,7 +24,7 @@ export default function TimeTable() {
         weekends={renderWeekends}
         events={events}
         eventContent={getRrenderEventContent(events, setEvents)}
-        dayCellContent={getCellDayContent(events, setEvents)}
+        dayCellContent={getCellDayContent}
       />
     </div>
   );

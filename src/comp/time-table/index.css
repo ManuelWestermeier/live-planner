@@ -3,9 +3,9 @@
 }
 
 .future-day {
-    background-color: dodgerblue;
+    background-color: red;
 }
 
 .current-day {
-    background-color: red;
+    background-color: dodgerblue;
 }
